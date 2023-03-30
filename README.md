@@ -20,7 +20,7 @@ Whether you're building a web application, a mobile app, or a desktop program, t
 Explain how to install your project, including any dependencies that need to be installed first.
 
 ```
-npm install
+npm i lv-validation
 ```
 
 <br />
