@@ -1,0 +1,46 @@
+{
+	"name": "lv-validation",
+	"version": "1.0.0",
+	"description": "lv-validation is a Javascript library that provides a comprehensive set of validation rules for incoming form data",
+	"main": "src/index.ts",
+	"scripts": {
+		"test": "jest --watch",
+		"test:rules": "jest --watch /src\\__tests__\\classes\\rules/",
+		"test:validation": "jest --watch src/__tests__/classes/validation.test.ts",
+		"index": "npx ts-node --files ./src/index.ts",
+		"artisan": "node artisan.ts",
+		"make:rule": "npm run artisan make:rule"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/iamaliybi/lv-validation.git"
+	},
+	"keywords": [
+		"validation",
+		"form-validation",
+		"validation-library",
+		"validation-js"
+	],
+	"author": {
+		"name": "Ali Yaghoubi",
+		"email": "iamaliybi.dev@gmail.com",
+		"url": "https://iamaliybi.dev"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/iamaliybi/lv-validation/issues"
+	},
+	"homepage": "https://github.com/iamaliybi/lv-validation",
+	"devDependencies": {
+		"@types/jest": "^29.5.0",
+		"@typescript-eslint/eslint-plugin": "^5.55.0",
+		"@typescript-eslint/parser": "^5.55.0",
+		"eslint": "^8.36.0",
+		"jest": "^29.5.0",
+		"jest-environment-jsdom": "^29.5.0",
+		"jest-transform-stub": "^2.0.0",
+		"ts-jest": "^29.0.5",
+		"ts-node": "^10.9.1",
+		"typescript": "^5.0.2"
+	}
+}

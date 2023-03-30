@@ -1,0 +1,47 @@
+{
+
+	"ts-node": {
+		"files": true
+	},
+	"files": [
+		"src/index.ts",
+		"src/@types/global.d.ts"
+	],
+	"compilerOptions": {
+		"target": "es2015",
+		"module": "commonjs",
+		"lib": [
+			"es6",
+			"dom",
+			"dom.iterable",
+			"esnext"
+		],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"checkJs": false,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"baseUrl": "src",
+		"outDir": "dist",
+		"skipDefaultLibCheck": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"strictNullChecks": true,
+	},
+	"include": [
+		"src",
+		"src/@types/*.d.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"dist",
+		"src/**/*.test.tsx",
+		"src/**/*.stories.tsx"
+	]
+}
