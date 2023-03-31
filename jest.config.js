@@ -1,8 +1,8 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
-module.exports = {
+export default {
 	preset: 'ts-jest',
 	testEnvironment: 'jsdom',
-	modulePaths: ["<rootDir>/src"],
+	modulePaths: ["<rootDir>/tests"],
 	transform: {
 		".+\\.(css|less|sass|scss|png|jpg|gif|ttf|woff|woff2)$": "jest-transform-stub",
 	},
