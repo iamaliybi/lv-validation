@@ -1,4 +1,4 @@
-{
+export default {
 	"accepted": "The :attribute must be accepted.",
 	"accepted_if": "The :attribute must be accepted when :other is :value.",
 	"active_url": "The :attribute is not a valid URL.",
@@ -116,4 +116,4 @@
 	"uploaded": "The :attribute failed to upload.",
 	"url": "The :attribute must be a valid URL.",
 	"uuid": "The :attribute must be a valid UUID."
-}
+};

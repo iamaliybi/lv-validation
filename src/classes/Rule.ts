@@ -1,4 +1,4 @@
-import errorsJSON from '../resources/errors.json';
+import errorsJSON from '../locale/en';
 
 class Rule {
 	private _data: ValidationDataType;
