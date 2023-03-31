@@ -36,9 +36,9 @@ import Validation from 'lv-validation';
 
 // Define the validation rules
 const rules = {
-  name: 'required|string|max:255',
-  email: 'required|email|max:255',
-  password: 'required|string|min:8',
+  name: ['required', 'string','max:255'],
+  email: ['required', 'email' ,'max:255'],
+  password: ['required', 'string', 'min:8'],
 };
 
 // Validate the input
