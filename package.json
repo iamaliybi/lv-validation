@@ -1,14 +1,16 @@
 {
 	"name": "lv-validation",
-	"version": "1.1.0",
+	"version": "1.1.2",
 	"description": "lv-validation is a Javascript library that provides a comprehensive set of validation rules for incoming form data",
-	"main": "src/index.ts",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"scripts": {
+		"artisan": "node artisan.ts",
+		"release": "npm run test && npm publish --access public",
+		"build": "tsc",
 		"test": "jest --watch",
 		"test:rules": "jest --watch /src\\__tests__\\classes\\rules/",
 		"test:validation": "jest --watch src/__tests__/classes/validation.test.ts",
-		"index": "npx ts-node --files ./src/index.ts",
-		"artisan": "node artisan.ts",
 		"make:rule": "npm run artisan make:rule"
 	},
 	"repository": {
@@ -26,6 +28,12 @@
 		"email": "iamaliybi.dev@gmail.com",
 		"url": "https://iamaliybi.dev"
 	},
+	"files": [
+		"src",
+		"dist"
+	],
+	"type": "module",
+	"sideEffects": false,
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/iamaliybi/lv-validation/issues"
@@ -40,7 +48,6 @@
 		"jest-environment-jsdom": "^29.5.0",
 		"jest-transform-stub": "^2.0.0",
 		"ts-jest": "^29.0.5",
-		"ts-node": "^10.9.1",
-		"typescript": "^5.0.2"
+		"typescript": "^5.0.3"
 	}
 }

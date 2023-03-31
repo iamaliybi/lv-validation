@@ -1,4 +1,4 @@
-# Laravel Validation (lv-validation)
+# Laravel Validation is now available for Javascript (lv-validation)
 
 A powerful tool for developers to validate form inputs on both the front and back end. This library is designed to provide a simple and flexible way to ensure that user input is properly formatted and meets the necessary requirements.
 

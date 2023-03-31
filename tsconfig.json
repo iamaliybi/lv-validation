@@ -1,21 +1,12 @@
 {
-
-	"ts-node": {
-		"files": true
-	},
 	"files": [
 		"src/index.ts",
 		"src/@types/global.d.ts"
 	],
 	"compilerOptions": {
-		"target": "es2015",
+		"target": "es5",
 		"module": "commonjs",
-		"lib": [
-			"es6",
-			"dom",
-			"dom.iterable",
-			"esnext"
-		],
+		"lib": ["es2015", "dom"],
 		"allowJs": true,
 		"skipLibCheck": true,
 		"esModuleInterop": true,
@@ -28,11 +19,14 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"baseUrl": "src",
-		"outDir": "dist",
+		"outDir": "./dist",
+		"rootDir": "./src",
 		"skipDefaultLibCheck": true,
 		"noImplicitAny": true,
 		"noImplicitThis": true,
 		"strictNullChecks": true,
+		"declaration": true,
+		"sourceMap": true
 	},
 	"include": [
 		"src",
@@ -41,7 +35,6 @@
 	"exclude": [
 		"node_modules",
 		"dist",
-		"src/**/*.test.tsx",
-		"src/**/*.stories.tsx"
+		"src/**/*.test.tsx"
 	]
 }
