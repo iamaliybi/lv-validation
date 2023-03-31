@@ -24,6 +24,8 @@ class MessageBag {
 				const item = this._bag[i];
 				if (item.key === key) return true;
 			}
+
+			return false;
 		} catch (e) {
 			return false;
 		}
