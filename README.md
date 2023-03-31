@@ -48,7 +48,7 @@ const input = {
   password: 'password123'
 };
 
-const validator = Validation.validate(input, rules);
+const validator = (new Validation(rules)).validate(input);
 
 if (validator.passes()) {
   // Continue with your application logic
