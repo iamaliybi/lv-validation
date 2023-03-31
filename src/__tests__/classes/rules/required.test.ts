@@ -2,9 +2,13 @@ import Rule from "classes/Rule";
 
 describe('"required"', () => {
 	test('"required" rule with out [attributes] and [messages]', () => {
-		const rule = new Rule();
+		const data = {
+			first_name: 'ALi'
+		};
 
-		expect(rule.required('Ali', 'first_name')).toBe(true);
+		const rule = new Rule(data);
+
+		expect(rule.required(data.first_name, 'first_name')).toBe(true);
 		
 		try {
 			rule.required(undefined, 'first_name');
@@ -14,12 +18,16 @@ describe('"required"', () => {
 	});
 
 	test('"required" rule with [attributes]', () => {
+		const data = {
+			first_name: 'ALi'
+		};
+
 		const attributes = {
 			'first_name': 'First Name'
 		};
 
 		try {
-			const rule = new Rule(attributes);
+			const rule = new Rule(data, attributes);
 			rule.required(undefined, 'first_name');
 		} catch (e) {
 			expect((e as Error).message).toBe("The First Name field is required.");
@@ -27,13 +35,17 @@ describe('"required"', () => {
 	});
 
 	test('"required" rule with [messages]', () => {
+		const data = {
+			first_name: 'ALi'
+		};
+
 		const messages = {
 			'first_name.required': "first_name can't be null."
 		};
 
 		
 		try {
-			const rule = new Rule({}, messages);
+			const rule = new Rule(data, {}, messages);
 			rule.required(undefined, 'first_name');
 		} catch (e) {
 			expect((e as Error).message).toBe("first_name can't be null.");
@@ -41,6 +53,10 @@ describe('"required"', () => {
 	});
 
 	test('"required" rule with [attributes] and [messages]', () => {
+		const data = {
+			first_name: 'ALi'
+		};
+
 		const attributes = {
 			'first_name': 'First Name'
 		};
@@ -50,7 +66,7 @@ describe('"required"', () => {
 		};
 
 		try {
-			const rule = new Rule(attributes, messages);
+			const rule = new Rule(data, attributes, messages);
 			rule.required(undefined, 'first_name');
 		} catch (e) {
 			expect((e as Error).message).toBe("First Name can't be null.");

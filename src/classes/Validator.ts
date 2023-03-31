@@ -26,7 +26,7 @@ class Validator {
 		this._rules = rules;
 		this._afterCallback = undefined;
 
-		this._validationRules = new Rule(attributes ?? {}, messages ?? {});
+		this._validationRules = new Rule(data, attributes ?? {}, messages ?? {});
 		this._validationErrors = new MessageBag();
 	}
 
@@ -83,10 +83,17 @@ class Validator {
 	}
 
 	/**
-	 * The $errors variable that is automatically made available to all views is also an instance of the MessageBag class.
+	 * The errors variable that is automatically made available to all views is also an instance of the MessageBag class.
 	 */
 	errors() {
 		return this._validationErrors;
+	}
+
+	/**
+	 * The getErrors variable automatically made errors available to all views
+	 */
+	getErrors() {
+		return this._validationErrors.all();
 	}
 
 	/**
@@ -110,13 +117,14 @@ class Validator {
 
 			try {
 				const args = values ? [value, field, ...values] : [value, field];
+
 				if (this._isRequired(field)) {
 					// @ts-ignore
-					this._validationRules[ruleName].apply(this._validationRules, args as [value: unknown]) as true | string;
+					this._validationRules[ruleName].apply(this._validationRules, args as [value: unknown]) ;
 				}
 				else if (typeof value !== 'undefined') {
 					// @ts-ignore
-					this._validationRules[ruleName].apply(this._validationRules, args as [value: unknown]) as true | string;
+					this._validationRules[ruleName].apply(this._validationRules, args as [value: unknown]);
 				}
 			} catch (e) {
 				this._validationErrors.add(field, (e as Error).message);

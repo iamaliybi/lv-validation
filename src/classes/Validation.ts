@@ -2,18 +2,23 @@ import ValidationError from "../exceptions/ValidationError";
 import Validator from "./Validator";
 
 class Validation {
-	private static _stopOnFirstFailure = false;
+	private _stopOnFirstFailure = false;
+
+	public rules: ValidationRuleType;
+
+	constructor(rules: ValidationRuleType) {
+		this.rules = rules;
+	}
 
 	/**
 	 * This method creates a new validation instance with the given data and rules.
 	 */
-	static make(
+	make(
 		data: ValidationDataType,
-		rules: ValidationRuleType,
 		attributes?: ValidationAttributeType,
 		messages?: ValidationMessagesType
 	) {
-		const validator = new Validator(data, rules, attributes, messages);
+		const validator = new Validator(data, this.rules, attributes, messages);
 		if (this._stopOnFirstFailure) validator.stopOnFirstFailure();
 
 		return validator;
@@ -22,13 +27,12 @@ class Validation {
 	/**
 	 * This method creates a new validation instance with the given data and rules.
 	 */
-	static validate(
+	validate(
 		data: ValidationDataType,
-		rules: ValidationRuleType,
 		attributes?: ValidationAttributeType,
 		messages?: ValidationMessagesType
 	): void {
-		const validator = new Validator(data, rules, attributes, messages);
+		const validator = new Validator(data, this.rules, attributes, messages);
 		if (this._stopOnFirstFailure) validator.stopOnFirstFailure();
 
 		validator.validate();
@@ -38,7 +42,7 @@ class Validation {
 	/**
 	 * Instruct the validator to stop validating after the first rule failure.
 	 */
-	static stopOnFirstFailure() {
+	stopOnFirstFailure() {
 		this._stopOnFirstFailure = true;
 		return this;
 	}

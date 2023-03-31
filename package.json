@@ -1,6 +1,6 @@
 {
 	"name": "lv-validation",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "lv-validation is a Javascript library that provides a comprehensive set of validation rules for incoming form data",
 	"main": "src/index.ts",
 	"scripts": {

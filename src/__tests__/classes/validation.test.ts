@@ -15,7 +15,8 @@ describe('Check response of "Validation" class', () => {
 		};
 
 		try {
-			Validation.validate(data, rules);
+			const validation = new Validation(rules);
+			validation.validate(data);
 		} catch (e) {
 			expect(!(e instanceof ValidationError)).toBeFalsy();
 		}
@@ -35,7 +36,7 @@ describe('Check response of "Validation" class', () => {
 		};
 
 		try {
-			Validation.validate(data, rules);
+			(new Validation(rules)).validate(data);
 		} catch (e) {
 			expect(e instanceof ValidationError).toBeTruthy();
 		}
@@ -54,8 +55,9 @@ describe('Check response of "Validation" class', () => {
 			birthday: ['required', 'date'],
 		};
 
-		const validator = Validation.make(data, rules);
-		validator.validate();
+		const validator = (new Validation(rules))
+			.make(data)
+			.validate();
 
 		expect(validator.passes()).toBe(true);
 		expect(validator.fails()).toBe(false);
@@ -74,7 +76,7 @@ describe('Check response of "Validation" class', () => {
 			birthday: ['required', 'date'],
 		};
 
-		const validator = Validation.make(data, rules);
+		const validator = (new Validation(rules)).make(data);
 		validator.validate();
 		expect(validator.fails()).toBe(true);
 	});
@@ -90,7 +92,7 @@ describe('Check response of "Validation" class', () => {
 			last_name: ['required', 'numeric', 'max:72', 'min:3']
 		};
 
-		const validator = Validation.make(data, rules).validate();
+		const validator = (new Validation(rules)).make(data).validate();
 		expect(validator.errors().count()).toBe(3);
 	});
 
@@ -107,8 +109,8 @@ describe('Check response of "Validation" class', () => {
 			birthday: ['required', 'date'],
 		};
 
-		const validator = Validation
-			.make(data, rules)
+		const validator = (new Validation(rules))
+			.make(data)
 			.stopOnFirstFailure()
 			.validate();
 
@@ -124,18 +126,8 @@ describe('Check response of "Validation" class', () => {
 			first_name: ['required', 'string', 'max:24', 'min:3']
 		};
 
-		// const attributes = {
-		// 	'experience.companyName': 'company name'
-		// };
-
-		// const messages = {
-		// 	'experience.object': "It's not object",
-		// 	'experience.companyName.string': "It's not string",
-		// 	'experience.toDate.date': "It's not date"
-		// };
-
-		const validator = Validation
-			.make(data, rules)
+		const validator = (new Validation(rules))
+			.make(data)
 			.stopOnFirstFailure()
 			.validate();
 
@@ -159,8 +151,8 @@ describe('Check response of "Validation" class', () => {
 			'first_name.string': ":attribute isn't string"
 		};
 
-		const validator = Validation
-			.make(data, rules, attributes, messages)
+		const validator = (new Validation(rules))
+			.make(data, attributes, messages)
 			.stopOnFirstFailure()
 			.validate();
 
