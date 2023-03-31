@@ -1,6 +1,6 @@
-import ValidationError from 'exceptions/ValidationError';
-import Validation from "classes/Validation";
-import errorsJSON from 'resources/errors.json';
+import ValidationError from "../../src/exceptions/ValidationError";
+import Validation from "../../src/classes/Validation";
+import errorsJSON from "../../src/locale/en";
 
 describe('Check response of "Validation" class', () => {
 	test('should not throw an exception instance of "ValidationError"', () => {
@@ -38,7 +38,7 @@ describe('Check response of "Validation" class', () => {
 		try {
 			(new Validation(rules)).validate(data);
 		} catch (e) {
-			expect(e instanceof ValidationError).toBeTruthy();
+			expect('errors' in (e as ValidationError)).toBeTruthy();
 		}
 	});
 

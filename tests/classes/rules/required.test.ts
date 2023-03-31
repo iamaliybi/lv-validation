@@ -1,4 +1,4 @@
-import Rule from "classes/Rule";
+import Rule from "../../../src/classes/Rule";
 
 describe('"required"', () => {
 	test('"required" rule with out [attributes] and [messages]', () => {
