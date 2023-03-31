@@ -1,13 +1,16 @@
 import errorsJSON from '../resources/errors.json';
 
 class Rule {
+	private _data: ValidationDataType;
+
 	private _messages: ValidationMessagesType;
 
 	private _attributes: ValidationAttributeType;
 
-	constructor(attributes: ValidationAttributeType = {}, messages: ValidationMessagesType = {}) {
-		this._messages = messages;
+	constructor(data: ValidationDataType, attributes: ValidationAttributeType = {}, messages: ValidationMessagesType = {}) {
+		this._data = data;
 		this._attributes = attributes;
+		this._messages = messages;
 	}
 
 	required(value: unknown, attribute: string) {
@@ -301,6 +304,17 @@ class Rule {
 		try {
 			if (!(value === null || value === '' || Array.isArray(value) && value.length === 0)) return true;
 			throw new Error(this._getMessage(attribute, "filled"));
+		} catch (e) {
+			throw new Error((e as Error).message.replace(':attribute', this._getAttributeName(attribute)));
+		}
+	}
+
+	confirmed(valueA: unknown, attribute: string) {
+		try {
+			const valueB = this._data[`${attribute}_confirmation`];
+			if (valueA === valueB) return true;
+
+			throw new Error(this._getMessage(attribute, "confirmed"));
 		} catch (e) {
 			throw new Error((e as Error).message.replace(':attribute', this._getAttributeName(attribute)));
 		}
